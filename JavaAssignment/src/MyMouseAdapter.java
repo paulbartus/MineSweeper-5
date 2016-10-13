@@ -116,4 +116,17 @@ public class MyMouseAdapter extends MouseAdapter {
 			break; 
 		} 
 	} 
+	
+	
+	public void RandomBombs(){
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 } 
