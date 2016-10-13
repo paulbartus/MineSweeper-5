@@ -28,14 +28,14 @@ public class MyPanel extends JPanel {
 			throw new RuntimeException("TOTAL_ROWS must be at least 3!");
 		}
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {   //Top row
-			colorArray[x][0] = Color.LIGHT_GRAY;
+			colorArray[x][0] = Color.WHITE;
 		}
 		for (int y = 1; y < TOTAL_ROWS; y++) {   //Left column
-			colorArray[0][y] = Color.lightGray;
+			colorArray[0][y] = Color.WHITE;
 		}
 		for (int x = 1; x < TOTAL_COLUMNS; x++) {   //The rest of the grid
-		for (int y = 1; y < TOTAL_ROWS; y++) {
-			colorArray[x][y] = Color.lightGray;
+			for (int y = 1; y < TOTAL_ROWS; y++) {
+				colorArray[x][y] = Color.WHITE;
 			}
 		}
 	}
@@ -65,7 +65,7 @@ public class MyPanel extends JPanel {
 			g.drawLine(x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)), y1 + GRID_Y, x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)), y1 + GRID_Y + ((INNER_CELL_SIZE + 1) * (TOTAL_ROWS)));
 		}
 
-		
+
 		//Paint cell colors
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {
 			for (int y = 0; y <TOTAL_ROWS; y++) {
@@ -118,7 +118,7 @@ public class MyPanel extends JPanel {
 		x = x / (INNER_CELL_SIZE + 1);
 		y = y / (INNER_CELL_SIZE + 1);
 
-		if (x < 0 || x > TOTAL_COLUMNS - 1 || y < 0 || y > TOTAL_ROWS - 2) {   //Outside the rest of the grid
+		if (x < 0 || x > TOTAL_COLUMNS - 1 || y < 0 || y > TOTAL_ROWS - 1) {   //Outside the rest of the grid
 			return -1;
 		}
 		return y;
