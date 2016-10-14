@@ -22,8 +22,7 @@ public class MyPanel extends JPanel {
 	//INDICATES WERE THE MINES ARE HIDDEN
 	public boolean [][]Mines = new boolean[TOTAL_COLUMNS][TOTAL_ROWS];
 	
-	public int [][]Counter = new int[TOTAL_COLUMNS][TOTAL_ROWS];
-	
+	public int [][]Counter = new int[TOTAL_COLUMNS][TOTAL_ROWS]; 
 	
 	
 	public static final int NUMBEROFMINES =10;
