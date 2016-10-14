@@ -12,7 +12,7 @@ public class MyPanel extends JPanel {
 	private static final int INNER_CELL_SIZE = 29;
 	private static final int TOTAL_COLUMNS = 9;
 	private static final int TOTAL_ROWS = 9;   //Last row has only one cell
-	public static final int NUMBER_OF_MINES=10;
+	public static final int NUMBEROFMINES =10;
 	public int x = -1;
 	public int y = -1;
 	public int mouseDownGridX = 0;
@@ -21,12 +21,10 @@ public class MyPanel extends JPanel {
 	
 	//INDICATES WERE THE MINES ARE HIDDEN
 	public boolean [][]Mines = new boolean[TOTAL_COLUMNS][TOTAL_ROWS];
-	
 	public int [][]Counter = new int[TOTAL_COLUMNS][TOTAL_ROWS]; 
 	
 	
-	public static final int NUMBEROFMINES =10;
-	
+
 	
 	
 	public MyPanel() {   //This is the constructor... this code runs first to initialize
