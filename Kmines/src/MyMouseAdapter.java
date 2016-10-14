@@ -95,17 +95,27 @@ public class MyMouseAdapter extends MouseAdapter {
 
 						//Released the mouse button on the same cell where it was pressed
 						//CHANGE COVERED CELLS TO UNCOVERED
-						for (int i = 0;i<=8;i++){
-							for (int j = 0;j<=8;j++){
-							if ((gridX == i) || (gridY == j)) {
-
-								Color newColor = Color.LIGHT_GRAY;
-							
-								myPanel.colorArray[i][j] = newColor; 
+				
+						
+						for (int columns = 0;columns<=9;columns++){
+							for (int rows = 0;rows<=9;rows++){
+							if ((gridX == columns) || (gridY == rows)) {
+								
+								
+								
+								if(myPanel.setMineColor() != true){
+									
+									myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.BLACK; 
+									myPanel.repaint(); 
+								}
+								
+								else{
+														
+								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.LIGHT_GRAY; 
 								myPanel.repaint(); 
-							}
-							} 
+							} }
 						} 
+						}
 					} 
 				} 
 			}
