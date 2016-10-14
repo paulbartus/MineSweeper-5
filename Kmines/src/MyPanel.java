@@ -118,6 +118,7 @@ while(numberofMinesPlace<NUMBEROFMINES){
 		}
 	
 	}
+	
 
 	//COUNTER OF WERE THE MINES ARE
 	public void Counter(){
@@ -136,12 +137,11 @@ while(numberofMinesPlace<NUMBEROFMINES){
 		int Yposition = y;
 		int Count = 0;
 
-
 		if(Mines[x][y]==true){
 
 			
 			if(x<0){Xposition= x-1;}else{x=x;}
-			if(y<0){}
+			if(y<0){Yposition=y-1;}else{y=y;}
 			for(int i =x ; i>3;i++){
 				
 				for(int j=y ;j>3;j++){
@@ -164,7 +164,6 @@ while(numberofMinesPlace<NUMBEROFMINES){
 }
 
 		
-
 
 
 
