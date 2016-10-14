@@ -21,6 +21,11 @@ public class MyPanel extends JPanel {
 	
 	//INDICATES WERE THE MINES ARE HIDDEN
 	public boolean [][]Mines = new boolean[TOTAL_COLUMNS][TOTAL_ROWS];
+	
+	public int [][]Counter = new int[TOTAL_COLUMNS][TOTAL_ROWS];
+	
+	
+	
 	public static final int NUMBEROFMINES =10;
 	
 	
@@ -46,15 +51,31 @@ public class MyPanel extends JPanel {
 				colorArray[x][y] = Color.white;
 			}
 		}
-			
-			for (int x = 1; x < TOTAL_COLUMNS; x++) {   //The rest of the grid
+			//INITIALIZES THE MINES
+			for (int x = 1; x < TOTAL_COLUMNS; x++) {   
 				for (int y = 1; y < TOTAL_ROWS; y++) {
 					Mines[x][y] = false;
 					
 				}
+				
+				
 		}
-			MinesLocation();
+			
+			//INITIALIZE COUNTER
+			for(int i=0;i<TOTAL_ROWS;i++){
+				for(int j=0;j<TOTAL_COLUMNS;j++){
+					
+				Counter[i][j]= 0;	
+						
+				
+					
+				}	
+					}
+			
 		
+			MinesLocation();
+			
+	
 	}
 	
 	
@@ -65,12 +86,13 @@ public class MyPanel extends JPanel {
 		
 	}
 	
-	//MINES LOCATION
+	//PUTS THE MINES LOCATION
 	public void MinesLocation(){
 		Random r= new Random();
 		int numberofMinesPlace = 0;
 
 while(numberofMinesPlace<NUMBEROFMINES){
+		
                         int x = r.nextInt(TOTAL_ROWS);
                         int y = r.nextInt(TOTAL_COLUMNS);
 			if(Mines[x][y]==false){
@@ -80,6 +102,7 @@ while(numberofMinesPlace<NUMBEROFMINES){
                        }
 			numberofMinesPlace++;
 }
+
 		}
 	//MINES UNCOVERED
 	public void setMineColor(){
@@ -88,12 +111,73 @@ while(numberofMinesPlace<NUMBEROFMINES){
 			for(int j=0;j<TOTAL_COLUMNS;j++){
 				if(Mines[i][j]==true){
 					colorArray[i][j]=Color.black;
+					
 				}
 				
 			}
 		}
 	
 	}
+
+	//COUNTER OF WERE THE MINES ARE
+	public void Counter(){
+
+		for(int i=0;i<TOTAL_ROWS;i++){
+			for(int j=0;j<TOTAL_COLUMNS;j++){
+
+				Counter[i][j]=CountAround(i,j);
+
+			}
+		}
+	}
+
+	public int CountAround(int x, int y){
+		int Xposition = x;
+		int Yposition = y;
+		int Count = 0;
+
+
+		if(Mines[x][y]==true){
+
+			
+			if(x<0){Xposition= x-1;}else{x=x;}
+			if(y<0){}
+			for(int i =x ; i>3;i++){
+				
+				for(int j=y ;j>3;j++){
+					if(Xposition != -1&&Yposition !=-1){
+						if(Xposition <9 && Yposition <9){	
+									
+							if(Mines[x][y]==true){
+								Count++;
+							}
+						}
+
+					}
+				}
+			}
+
+				
+			
+		}
+		return Count;
+}
+
+		
+
+
+
+
+		
+		
+		
+	
+		
+		
+				
+	
+
+	
 	
 	
 	
