@@ -92,24 +92,11 @@ public class MyMouseAdapter extends MouseAdapter {
 						//Do nothing
 
 					} else {
-
 						//Released the mouse button on the same cell where it was pressed
-						//CHANGE COVERED CELLS TO UNCOVERED
-						for (int columns = 0;columns<=9;columns++){
-							for (int rows = 0;rows<=9;rows++){
-								if ((gridX == columns) || (gridY == rows)) {
-
-									if(myPanel.setMineColor() != true){
-										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.BLACK; 
-										myPanel.repaint(); 
-									}
-									else{				
-										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.LIGHT_GRAY; 
-										myPanel.repaint(); 
-									} 
-								}
-							} 
-						}
+				
+						
+						
+						
 					} 
 				} 
 			}
@@ -123,4 +110,15 @@ public class MyMouseAdapter extends MouseAdapter {
 			break; 
 		} 
 	} 
-}
+	
+	
+		
+	}
+	
+
+	
+	
+	
+	
+	
+	

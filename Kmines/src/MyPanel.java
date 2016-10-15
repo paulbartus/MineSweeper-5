@@ -12,19 +12,23 @@ public class MyPanel extends JPanel {
 	private static final int INNER_CELL_SIZE = 29;
 	private static final int TOTAL_COLUMNS = 9;
 	private static final int TOTAL_ROWS = 9;   //Last row has only one cell
-	public static final int NUMBER_OF_MINES=10;
+	public static final int NUMBEROFMINES =10;
 	public int x = -1;
 	public int y = -1;
 	public int mouseDownGridX = 0;
 	public int mouseDownGridY = 0;
+	public static final int MINE = -1;
+	public int flagCounter =10;
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
-
+	
 	//INDICATES WERE THE MINES ARE HIDDEN
 	public boolean [][]Mines = new boolean[TOTAL_COLUMNS][TOTAL_ROWS];
-	public static final int NUMBEROFMINES =10;
+	public int [][]Counter = new int[TOTAL_COLUMNS][TOTAL_ROWS]; 
+	
+	
 
-
-
+	
+	
 	public MyPanel() {   //This is the constructor... this code runs first to initialize
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	//Use of "random" to prevent unwanted Eclipse warning
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");
@@ -46,60 +50,136 @@ public class MyPanel extends JPanel {
 				colorArray[x][y] = Color.white;
 			}
 		}
-
-		for (int x = 1; x < TOTAL_COLUMNS; x++) {   //The rest of the grid
-			for (int y = 1; y < TOTAL_ROWS; y++) {
-				Mines[x][y] = false;
-
-			}
+			//INITIALIZES THE MINES
+			for (int x = 1; x < TOTAL_COLUMNS; x++) {   
+				for (int y = 1; y < TOTAL_ROWS; y++) {
+					Mines[x][y] = false;
+					
+				}
+				
+				
 		}
-		MinesLocation();
-
+			
+			//INITIALIZE COUNTER
+			for(int i=0;i<TOTAL_ROWS;i++){
+				for(int j=0;j<TOTAL_COLUMNS;j++){
+					
+				Counter[i][j]= 0;	
+						
+				
+					
+				}	
+					}
+			
+		
+			MinesLocation();
+			
+	
 	}
-
-
+	
+	
 	//INITIALIZES THE GAME
 	public void NewGame(){
-
-
-
+		
+	
+		
 	}
-
-	//MINES LOCATION
-	public boolean MinesLocation(){
+	
+	//PUTS THE MINES LOCATION
+	public void MinesLocation(){
 		Random r= new Random();
 		int numberofMinesPlace = 0;
 
-		while(numberofMinesPlace<NUMBEROFMINES){
-			int x = r.nextInt(TOTAL_ROWS);
-			int y = r.nextInt(TOTAL_COLUMNS);
+while(numberofMinesPlace<NUMBEROFMINES){
+		
+                        int x = r.nextInt(TOTAL_ROWS);
+                        int y = r.nextInt(TOTAL_COLUMNS);
 			if(Mines[x][y]==false){
-				Mines[x][y] = true;
-				System.out.println("Coordinate:("+y+","+x+")");
-				System.out.println(Mines[x][y]);
-			}
+                            Mines[x][y] = true;
+                            System.out.println("Coordinate:("+x+","+y+")");
+                            System.out.println(Mines[x][y]);
+                       }
 			numberofMinesPlace++;
-		}
-		return true;	}
-	//MINES UNCOVERED
-	public boolean setMineColor(){
+}
 
+		}
+	//MINES UNCOVERED
+	public void setMineColor(){
+		
 		for(int i=0;i<TOTAL_ROWS;i++){
 			for(int j=0;j<TOTAL_COLUMNS;j++){
 				if(Mines[i][j]==true){
 					colorArray[i][j]=Color.black;
-				
+					
 				}
+				
+			}
+		}
+	
+	}
+	
+
+	//COUNTER OF WERE THE MINES ARE
+	public void Counter(){
+
+		for(int i=0;i<TOTAL_ROWS;i++){
+			for(int j=0;j<TOTAL_COLUMNS;j++){
+
+				Counter[i][j]=CountAround(i,j);
 
 			}
 		}
-		return true;
-
 	}
 
+	public int CountAround(int x, int y){
+		int Xposition = x;
+		int Yposition = y;
+		int Count = 0;
+
+		if(Mines[x][y]==true){
+
+			
+			if(x<0){Xposition= x-1;}else{x=x;}
+			if(y<0){Yposition=y-1;}else{y=y;}
+			for(int i =x ; i>3;i++){
+				
+				for(int j=y ;j>3;j++){
+					if(Xposition != -1&&Yposition !=-1){
+						if(Xposition <9 && Yposition <9){	
+									
+							if(Mines[x][y]==true){
+								Count++;
+							}
+						}
+
+					}
+				}
+			}
+
+				
+			
+		}
+		return Count;
+}
+
+		
 
 
 
+		
+		
+		
+	
+		
+		
+				
+	
+
+	
+	
+	
+	
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
