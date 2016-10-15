@@ -17,6 +17,8 @@ public class MyPanel extends JPanel {
 	public int y = -1;
 	public int mouseDownGridX = 0;
 	public int mouseDownGridY = 0;
+	public static final int MINE = -1;
+	public int flagCounter =10;
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
 	
 	//INDICATES WERE THE MINES ARE HIDDEN
