@@ -176,26 +176,7 @@ while(numberofMinesPlace<NUMBEROFMINES){
 
 	}
 
-				
-			
 
-		
-
-
-
-		
-		
-		
-	
-		
-		
-				
-	
-
-	
-	
-	
-	
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
