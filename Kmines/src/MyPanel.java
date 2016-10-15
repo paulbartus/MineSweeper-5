@@ -65,7 +65,7 @@ public class MyPanel extends JPanel {
 				for(int j=0;j<TOTAL_COLUMNS;j++){
 					
 				Counter[i][j]= 0;	
-						
+			
 				
 					
 				}	
@@ -73,6 +73,8 @@ public class MyPanel extends JPanel {
 			
 		
 			MinesLocation();
+			
+	
 			
 	
 	}
@@ -128,39 +130,54 @@ while(numberofMinesPlace<NUMBEROFMINES){
 				Counter[i][j]=CountAround(i,j);
 
 			}
+			
 		}
 	}
 
+	
+	
+	//RETURN HOW MANY MINES ARE AROUND THE GRID
+	
 	public int CountAround(int x, int y){
 		int Xposition = x;
 		int Yposition = y;
-		int Count = 0;
+		int CountOfMines = 0;
+		int XLEFT;
+		int XRIGHT;
+		int YTOP;
+		int YBOT;
 
-		if(Mines[x][y]==true){
+		if(Mines[Xposition][Yposition]==true){
 
-			
-			if(x<0){Xposition= x-1;}else{x=x;}
-			if(y<0){Yposition=y-1;}else{y=y;}
-			for(int i =x ; i>3;i++){
-				
-				for(int j=y ;j>3;j++){
-					if(Xposition != -1&&Yposition !=-1){
-						if(Xposition <9 && Yposition <9){	
-									
-							if(Mines[x][y]==true){
-								Count++;
-							}
+
+			if(x==0){XLEFT = 0;}else{XLEFT = Xposition-1;}
+			if(x>=8){XRIGHT=8;}else{XRIGHT=x+1;}
+			if(y == 0){YTOP = 0;}else{YTOP = Yposition - 1;}
+			if(y >= 8){YBOT = 8;}else{YBOT = y + 1;}
+			for(int i =XLEFT ; i<=XRIGHT;i++){
+
+				for(int j=YTOP ;j<=YBOT;j++){
+					if((i==Xposition&& j==Yposition)||(Mines[x][y]=true)){
+
+					}else{
+						if(Mines[x][y]==true){
+							CountOfMines++;
+
 						}
 
 					}
-				}
+				}	
+
 			}
+		}
+		System.out.println(CountOfMines);
+		
+		return CountOfMines;
+
+	}
 
 				
 			
-		}
-		return Count;
-}
 
 		
 
@@ -218,6 +235,8 @@ while(numberofMinesPlace<NUMBEROFMINES){
 			}
 		}
 	}
+	
+	//GRID OF X
 	public int getGridX(int x, int y) {
 		Insets myInsets = getInsets();
 		int x1 = myInsets.left;
@@ -241,6 +260,7 @@ while(numberofMinesPlace<NUMBEROFMINES){
 		}
 		return x;
 	}
+	//GRID OF Y
 	public int getGridY(int x, int y) {
 		Insets myInsets = getInsets();
 		int x1 = myInsets.left;

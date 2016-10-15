@@ -94,8 +94,7 @@ public class MyMouseAdapter extends MouseAdapter {
 					} else {
 						//Released the mouse button on the same cell where it was pressed
 				
-						
-						
+				
 						
 					} 
 				} 
